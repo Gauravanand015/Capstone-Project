@@ -7,9 +7,9 @@ import { useSelector } from "react-redux";
 import CartItem from "../cart-item/cart-item.component";
 import { useNavigate } from "react-router-dom";
 import {
-  CartDropDownContainer,
-  CartItems,
-  EmptyMessage,
+ CartDropdownContainer,
+ EmptyMessage,
+ CartItems
 } from "./cart-dropdown.styles.jsx";
 import { selectCartItems } from "../../store/cart/cart.selector";
 
@@ -24,7 +24,7 @@ const CartDropdown = () => {
   };
 
   return (
-    <CartDropDownContainer>
+    <CartDropdownContainer>
       <CartItems>
         {cartItems.length ? (
           cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
@@ -33,7 +33,7 @@ const CartDropdown = () => {
         )}
       </CartItems>
       <Button onClick={goToCheckoutPage}>Go to Cart</Button>
-    </CartDropDownContainer>
+    </CartDropdownContainer>
   );
 };
 

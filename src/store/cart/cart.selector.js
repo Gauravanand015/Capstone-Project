@@ -7,10 +7,10 @@ export const selectIsCartOpen = createSelector([selectCartReducer], (cart) => {
   return cart.isCartOpen;
 });
 
-export const selectCartItems = createSelector(
-  [selectCartReducer],
-  (cart) => cart.cartItems
-);
+export const selectCartItems = createSelector([selectCartReducer], (cart) => {
+  console.log(cart)
+  return cart.cartItems;
+});
 
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce(
