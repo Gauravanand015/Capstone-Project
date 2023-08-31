@@ -1,12 +1,13 @@
+// import {
+//   createUserDocumentWithAuth,
+//   creteAuthUserWithEmailAndPassword,
+// } from "../../utils/firebase.utlis";
 import { useState } from "react";
-import {
-  createUserDocumentWithAuth,
-  creteAuthUserWithEmailAndPassword,
-} from "../../utils/firebase.utlis";
 import FormInput from "../form-input/form-input.component";
-
 import { SignUpContainer } from './sign-up.styles';
 import Button from "../button/button.component";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 
 const defaultFormFields = {
   displayName: "",
@@ -18,6 +19,7 @@ const defaultFormFields = {
 const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  const dispatch = useDispatch()
 
   // console.log(formFields);
 
@@ -39,11 +41,14 @@ const SignUp = () => {
     }
 
     try {
-      let res = await creteAuthUserWithEmailAndPassword(email, password);
+      // let res = await creteAuthUserWithEmailAndPassword(email, password);
       // console.log(res);
+      // await createUserDocumentWithAuth(res.user, { displayName });
 
-      await createUserDocumentWithAuth(res.user, { displayName });
+      dispatch(signUpStart(email,password,displayName))
+
       alert("User Created");
+      
       resetFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
