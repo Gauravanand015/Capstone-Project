@@ -23,3 +23,30 @@ export const userReducer = (state = USER_INITIAL_STATE, action = {}) => {
       return state;
   }
 };
+
+// #########################################################################
+
+// using redux toolkit now
+
+// import { createSlice } from "@reduxjs/toolkit";
+
+// export const USER_INITIAL_STATE = {
+//   currentUser: null,
+//   isLoading: false,
+//   error: null,
+// };
+
+
+// export const userSlice = createSlice({
+//   name:"user",
+//   initialState: USER_INITIAL_STATE,
+//   reducers: {
+//     setCurrentUser(state,action){
+//       state.currentUser = action.payload // this looks like mutable but under the hood it is immutable redux-toolkit using the library called [imre] which is responsible to show its looks like mutation  
+//     }
+//   }
+// })
+
+// export const {setCurrentUser} = userSlice.actions
+
+// export const userReducer = userSlice.reducer
